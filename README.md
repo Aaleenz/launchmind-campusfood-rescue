@@ -1,0 +1,1 @@
+# launchmind-campusfood-rescue
