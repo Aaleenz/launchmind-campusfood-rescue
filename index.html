@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusFood Rescue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" class="logo">CampusFood Rescue</a></li>
+                <li><a href="#" class="cta">Sign up for SMS Alerts</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Save Money, Reduce Waste</h1>
+        <h2>Get notified about excess food available at discounted prices on campus</h2>
+        <img src="hero-image.jpg" alt="Hero Image">
+    </section>
+    <section class="features">
+        <h2>How it Works</h2>
+        <ul>
+            <li>
+                <i class="fas fa-bell"></i>
+                <h3>Real-time SMS Alerts</h3>
+                <p>Receive instant notifications on your mobile phone when excess food is available at discounted prices.</p>
+            </li>
+            <li>
+                <i class="fas fa-list"></i>
+                <h3>Discounted Food Listings</h3>
+                <p>Our mobile app and website display a list of available excess food items, along with their discounted prices.</p>
+            </li>
+            <li>
+                <i class="fas fa-chart-line"></i>
+                <h3>Waste Reduction Analytics</h3>
+                <p>The system provides cafeteria managers with detailed analytics on food waste reduction, including metrics on total waste reduction, cost savings, and customer engagement.</p>
+            </li>
+        </ul>
+    </section>
+    <section class="how-it-works">
+        <h2>Key Features</h2>
+        <ul>
+            <li>
+                <i class="fas fa-check"></i>
+                <h3>Food Item Categorization</h3>
+                <p>Excess food items are categorized into meal types (breakfast, lunch, dinner) and dietary preferences (vegetarian, non-vegetarian).</p>
+            </li>
+            <li>
+                <i class="fas fa-trophy"></i>
+                <h3>Reward Points System</h3>
+                <p>Students earn reward points for purchasing excess food items, which can be redeemed for discounts on future purchases or other campus services.</p>
+            </li>
+            <li>
+                <i class="fas fa-user"></i>
+                <h3>Student-Friendly Interface</h3>
+                <p>Our mobile app and website are designed to be user-friendly and easy to navigate, making it simple for students to find and purchase excess food items.</p>
+            </li>
+        </ul>
+    </section>
+    <section class="signup">
+        <h2>Sign up for CampusFood Rescue</h2>
+        <p>Get notified about excess food available at discounted prices on campus</p>
+        <form>
+            <input type="email" placeholder="Enter your email address">
+            <button type="submit">Sign up</button>
+        </form>
+        <p>Or sign up for SMS alerts by texting <span>CFR</span> to <span>5555555555</span></p>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav ul li a.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul li a.cta {
+    background-color: #fff;
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hero {
+    background-image: linear-gradient(to bottom, #333, #555);
+    background-size: 100% 300px;
+    background-position: 0% 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.hero img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+
+.features {
+    background-color: #f7f7f7;
+    padding: 2em;
+}
+
+.features h2 {
+    margin-top: 0;
+}
+
+.features ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.features li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.features li i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.how-it-works {
+    background-color: #f7f7f7;
+    padding: 2em;
+}
+
+.how-it-works h2 {
+    margin-top: 0;
+}
+
+.how-it-works ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.how-it-works li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.how-it-works li i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.signup {
+    background-color: #333;
+    color: #fff;
+    padding: 2em;
+    text-align: center;
+}
+
+.signup h2 {
+    margin-top: 0;
+}
+
+.signup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+.signup button {
+    background-color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup p {
+    margin-top: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+    .features {
+        padding: 1em;
+    }
+    .how-it-works {
+        padding: 1em;
+    }
+    .signup {
+        padding: 1em;
+    }
+}
+```
+
+```javascript
+// script.js
+
+// Add event listener to CTAs
+document.querySelectorAll('.cta').forEach(cta => {
+    cta.addEventListener('click', () => {
+        alert('Sign up for SMS alerts by texting CFR to 5555555555');
+    });
+});
