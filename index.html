@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusFood Rescue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#signup">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="hero">
+        <h1>CampusFood Rescue</h1>
+        <h2>Save Money, Eat Well, Reduce Waste</h2>
+        <button>Sign Up for Email Updates</button>
+    </section>
+    <section id="features">
+        <h2>Key Features</h2>
+        <div class="feature">
+            <h3>Real-time Food Availability Notifications</h3>
+            <p>Students receive SMS alerts when food is available at discounted prices, and cafeteria managers can schedule notifications in advance.</p>
+        </div>
+        <div class="feature">
+            <h3>Discounted Prices for Leftover Food</h3>
+            <p>Students can purchase leftover food at discounted prices, and cafeteria managers can set custom prices for different types of food.</p>
+        </div>
+        <div class="feature">
+            <h3>Food Waste Analytics</h3>
+            <p>Administrators can track and analyze food waste data to identify trends and areas for improvement, and cafeteria managers can use this data to inform their food planning and purchasing decisions.</p>
+        </div>
+    </section>
+    <section id="how-it-works">
+        <h2>How it Works</h2>
+        <ol>
+            <li>Cafeteria managers schedule notifications for available food.</li>
+            <li>Students receive SMS alerts and can purchase leftover food at discounted prices.</li>
+            <li>Administrators track and analyze food waste data to identify areas for improvement.</li>
+        </ol>
+    </section>
+    <section id="signup">
+        <h2>Get Started Today!</h2>
+        <button>Sign Up for SMS Alerts</button>
+        <p>Stay up-to-date with the latest food availability and discounts.</p>
+    </section>
+    <footer>
+        <p>&copy; 2023 CampusFood Rescue</p>
+    </footer>
+</body>
+</html>
+```
+
+```css
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#hero {
+    background-image: linear-gradient(to bottom, #333, #555);
+    background-size: 100% 300px;
+    background-position: 0% 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+#hero h1 {
+    font-size: 48px;
+}
+
+#hero h2 {
+    font-size: 24px;
+}
+
+#hero button {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+#features {
+    padding: 20px;
+}
+
+.feature {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature h3 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+#how-it-works {
+    padding: 20px;
+}
+
+#how-it-works ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#how-it-works li {
+    margin-bottom: 10px;
+}
+
+#signup {
+    padding: 20px;
+}
+
+#signup button {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        height: 50vh;
+    }
+    #hero h1 {
+        font-size: 36px;
+    }
+    #hero h2 {
+        font-size: 18px;
+    }
+    #hero button {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+    #features {
+        padding: 10px;
+    }
+    .feature {
+        padding: 10px;
+    }
+    #how-it-works {
+        padding: 10px;
+    }
+    #how-it-works ol {
+        margin-bottom: 0;
+    }
+    #signup {
+        padding: 10px;
+    }
+    #signup button {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+}
