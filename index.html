@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusFood Rescue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CampusFood Rescue</div>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#sign-up">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <h1>Get the best campus food at a fraction of the cost!</h1>
+            <p>Reduce food waste, save money, and eat healthy with CampusFood Rescue!</p>
+            <button id="sign-up-btn">Sign Up</button>
+        </section>
+        <section id="features">
+            <h2>How it Works</h2>
+            <div class="feature">
+                <i class="fas fa-bell"></i>
+                <h3>Real-time Notifications</h3>
+                <p>Get notified when leftover food is available at discounted prices.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-coins"></i>
+                <h3>Discounted Food Prices</h3>
+                <p>Purchase leftover food at a fraction of the original price.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Food Availability Tracking</h3>
+                <p>Track and manage leftover food in real-time.</p>
+            </div>
+        </section>
+        <section id="how-it-works">
+            <h2>How CampusFood Rescue Works</h2>
+            <ul>
+                <li>Students receive push notifications and SMS alerts when leftover food is available.</li>
+                <li>Cafeteria managers track and manage leftover food in real-time.</li>
+                <li>Students purchase leftover food at discounted prices.</li>
+                <li>Cafeteria managers receive detailed analytics and reports on food waste reduction.</li>
+            </ul>
+        </section>
+        <section id="sign-up">
+            <h2>Sign Up Now!</h2>
+            <p>Join thousands of students who are saving money and reducing food waste with CampusFood Rescue.</p>
+            <button id="email-sign-up-btn">Sign Up with Email</button>
+            <button id="sms-sign-up-btn">Sign Up with SMS</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 CampusFood Rescue. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    color: #ccc;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+#hero {
+    background-image: linear-gradient(to bottom, #333, #555);
+    background-size: 100% 300px;
+    background-position: 0% 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+#hero h1 {
+    font-size: 2em;
+}
+
+#hero button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#hero button:hover {
+    background-color: #444;
+}
+
+#features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+.feature {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.feature i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+#how-it-works {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+#how-it-works ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#how-it-works li {
+    margin-bottom: 20px;
+}
+
+#sign-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+#sign-up button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#sign-up button:hover {
+    background-color: #444;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    clear: both;
+}
+
+@media (max-width: 768px) {
+    #hero {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hero {
+        height: 150px;
+    }
+    #features {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+    }
+    .feature {
+        width: 100%;
+    }
+    #how-it-works {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+    }
+    #sign-up {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1em;
+    }
+}
+```
+
+```javascript
+// script.js
+
+document.getElementById('sign-up-btn').addEventListener('click', () => {
+    alert('Sign up for our newsletter or SMS alert service to receive exclusive offers and discounts!');
+});
+
+document.getElementById('email-sign-up-btn').addEventListener('click', () => {
+    alert('Thank you for signing up! You will receive an email with instructions on how to proceed.');
+});
+
+document.getElementById('sms-sign-up-btn').addEventListener('click', () => {
+    alert('Thank you for signing up! You will receive an SMS with instructions on how to proceed.');
+});
