@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusFood Rescue</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h1>CampusFood Rescue</h1>
+            <p>Save money on leftover campus cafeteria food while reducing food waste for cafeteria managers.</p>
+        </div>
+    </header>
+    <main>
+        <section class="features">
+            <h2>How it Works</h2>
+            <p>CampusFood Rescue is a real-time notification system that helps students save money on leftover campus cafeteria food while reducing food waste for cafeteria managers.</p>
+            <div class="feature-box">
+                <div class="feature">
+                    <h3>Real-time Notification System</h3>
+                    <p>Students receive SMS alerts about available leftover food at discounted prices, with options to filter by food type, price, and dietary preferences.</p>
+                </div>
+                <div class="feature">
+                    <h3>Food Tracking and Inventory Management</h3>
+                    <p>Cafeteria managers can easily track and manage their food inventory, including the types of food available, quantities, and expiration dates.</p>
+                </div>
+                <div class="feature">
+                    <h3>Waste Reduction Analytics</h3>
+                    <p>Cafeteria managers receive detailed analytics on food waste reduction, including metrics on the amount of food rescued, waste reduction rates, and cost savings.</p>
+                </div>
+            </div>
+        </section>
+        <section class="signup">
+            <h2>Sign up for SMS Alerts or Email Updates</h2>
+            <form>
+                <input type="email" placeholder="Enter your email address">
+                <button>Sign up for email updates</button>
+                <input type="tel" placeholder="Enter your phone number">
+                <button>Sign up for SMS alerts</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 CampusFood Rescue</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+.hero {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.features {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+.feature-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: calc(33.33% - 20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature h3 {
+    margin-top: 0;
+}
+
+.signup {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="email"], input[type="tel"] {
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+}
+
+button {
+    padding: 1em 2em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    clear: both;
+}
+
+@media only screen and (max-width: 768px) {
+    .feature-box {
+        flex-direction: column;
+    }
+    .feature {
+        margin: 1em 0;
+        width: 100%;
+    }
+}
+```
+
+```javascript
+// script.js
+
+// No script code needed for this example
