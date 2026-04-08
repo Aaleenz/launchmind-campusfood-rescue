@@ -11,6 +11,7 @@ from agents.ceo_agent import CEOAgent
 from agents.product_agent import ProductAgent
 from agents.engineer_agent import EngineerAgent
 from agents.marketing_agent import MarketingAgent
+from agents.qa_agent import QAAgent
 from message_bus import message_bus
 from dotenv import load_dotenv
 
@@ -50,12 +51,13 @@ def main():
     product = ProductAgent()
     engineer = EngineerAgent()
     marketing = MarketingAgent()
+    qa = QAAgent(ceo.client, message_bus)  # Pass Groq client and message bus
     
     # Run agents in threads (so they can all listen to message bus)
     threads = []
     
-    # Start product, engineer, marketing agents first (they'll wait for messages)
-    for agent, name in [(product, "Product"), (engineer, "Engineer"), (marketing, "Marketing")]:
+    # Start product, engineer, marketing, QA agents first (they'll wait for messages)
+    for agent, name in [(product, "Product"), (engineer, "Engineer"), (marketing, "Marketing"), (qa, "QA")]:
         t = threading.Thread(target=run_agent, args=(agent, name))
         t.daemon = True
         t.start()
@@ -73,11 +75,19 @@ def main():
         print("🎉 SYSTEM EXECUTION COMPLETE!")
         print("="*60)
         print("\n📊 Final Results:")
-        print(f"   • Product Spec: Created with {len(results['product_spec'].get('features', []))} features")
-        print(f"   • GitHub PR: {results['engineer_result'].get('pr_url', 'N/A')}")
+        print(f"   • Product Spec: Created with {len(results.get('product_spec', {}).get('features', []))} features")
+        print(f"   • GitHub PR: {results.get('engineer_result', {}).get('pr_url', 'N/A')}")
         print(f"   • Email: Sent to test inbox")
-        print(f"   • Social Posts: {len(results['marketing_result'].get('social_posts', []))} generated")
+        print(f"   • Social Posts: {len(results.get('marketing_result', {}).get('social_posts', []))} generated")
         print(f"   • Slack: Posted to #launches channel")
+        
+        # QA results
+        if results.get('qa_results'):
+            qa = results['qa_results']
+            print(f"\n🔍 QA Review Results:")
+            print(f"   • Verdict: {qa.get('verdict', 'N/A')}")
+            print(f"   • Overall Score: {qa.get('overall_score', 'N/A')}/10")
+            print(f"   • QA Iterations: {qa.get('qa_iterations', 0)}")
         
     except KeyboardInterrupt:
         print("\n\n⚠️ System interrupted by user")

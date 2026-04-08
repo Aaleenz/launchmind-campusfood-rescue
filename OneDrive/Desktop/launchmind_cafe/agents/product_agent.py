@@ -3,6 +3,7 @@ import json
 import re
 import time
 from groq import Groq
+from groq import RateLimitError
 from message_bus import message_bus
 
 class ProductAgent:
@@ -12,12 +13,42 @@ class ProductAgent:
             raise ValueError("GROQ_API_KEY not found in environment variables!")
         self.client = Groq(api_key=api_key)
         self.pending_spec = None
-        self.improvement_log = []  # Track improvements
-        self.previous_specs = []   # Store previous specs for comparison
+        self.improvement_log = []
+        self.previous_specs = []
         self.revision_count = 0
         self.current_idea = None
         self.current_focus = None
         self.current_requirements = None
+    
+    def call_llm_with_retry(self, prompt: str, max_retries: int = 5) -> str:
+        """Call Groq API with exponential backoff for rate limits"""
+        for attempt in range(max_retries):
+            try:
+                response = self.client.chat.completions.create(
+                    model="llama-3.1-8b-instant",
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.7 if "revision" in prompt.lower() else 0.5,
+                    timeout=30
+                )
+                return response.choices[0].message.content
+            except RateLimitError as e:
+                wait_time = 10
+                error_msg = str(e)
+                import re
+                match = re.search(r"try again in ([\d.]+)s", error_msg)
+                if match:
+                    wait_time = float(match.group(1)) + 1
+                
+                print(f"   ⚠️ Rate limit hit (attempt {attempt+1}/{max_retries}), waiting {wait_time}s...")
+                time.sleep(wait_time)
+            except Exception as e:
+                print(f"   ⚠️ API error (attempt {attempt+1}/{max_retries}): {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(3)
+                else:
+                    raise e
+        
+        raise Exception(f"Failed after {max_retries} retries")
     
     def extract_json(self, text: str) -> dict:
         """Extract JSON from text that might have markdown formatting"""
@@ -30,16 +61,55 @@ class ProductAgent:
         
         if start != -1 and end != -1:
             json_str = text[start:end+1]
-            return json.loads(json_str)
+            try:
+                return json.loads(json_str)
+            except json.JSONDecodeError as e:
+                print(f"   ⚠️ JSON decode error: {e}")
+                # Try to fix common JSON issues
+                json_str = re.sub(r',\s*}', '}', json_str)
+                json_str = re.sub(r',\s*]', ']', json_str)
+                return json.loads(json_str)
         else:
             raise ValueError(f"No JSON object found in response: {text[:200]}")
+    
+    def get_fallback_spec(self) -> dict:
+        """Return fallback product spec when API fails"""
+        return {
+            "value_proposition": "CampusFood Rescue connects students with discounted campus cafeteria food, reducing waste and saving students money through real-time SMS alerts.",
+            "personas": [
+                {"name": "Hungry Hamza", "role": "student", "pain_point": "Spends too much on food, wants affordable meals"},
+                {"name": "Manager Mahmood", "role": "cafeteria manager", "pain_point": "40% of food goes to waste daily, losing revenue"}
+            ],
+            "features": [
+                {"name": "Real-time SMS Alerts", "description": "Get SMS within 30 seconds when food is available at 30-50% discount", "priority": 1},
+                {"name": "Discounted Food Listings", "description": "Browse and claim discounted food items before they're gone", "priority": 2},
+                {"name": "Waste Analytics Dashboard", "description": "Track waste reduction metrics and savings for cafeteria managers", "priority": 3},
+                {"name": "Student Preference Profiles", "description": "Customize food type alerts based on dietary preferences", "priority": 4},
+                {"name": "Manager Controls", "description": "Post deals and track inventory in real-time", "priority": 5}
+            ],
+            "user_stories": [
+                "As a hungry student, I want to receive SMS alerts within 30 seconds when food is available so that I can save money on meals",
+                "As a cafeteria manager, I want to post leftover food deals so that I can reduce waste by 30%",
+                "As a student, I want to see discounted food options sorted by distance so that I can eat affordably"
+            ],
+            "acceptance_criteria": {
+                "story_1": "Given a student is registered, when food becomes available, then they receive SMS within 30 seconds",
+                "story_2": "Given a manager has leftover food, when they post a deal, then it appears in student feeds immediately",
+                "story_3": "Given a student opens the app, when they view options, then they see discounted items sorted by distance"
+            },
+            "success_metrics": [
+                "Reduce campus food waste by 40% within 6 months",
+                "Save average student Rs. 2,000 per semester",
+                "Onboard 10 cafeteria managers in first month",
+                "Achieve 95% SMS delivery rate within 30 seconds"
+            ]
+        }
     
     def generate_product_spec(self, idea: str, focus: str, requirements: list, revision_feedback: str = None, previous_score: int = None, specific_missing: list = None) -> dict:
         """Generate product spec with explicit improvement requirements"""
         
         revision_instruction = ""
         if revision_feedback:
-            # Parse feedback to extract explicit requirements
             missing_items_text = ""
             if specific_missing:
                 missing_items_text = "\n   SPECIFIC MISSING ITEMS FROM PREVIOUS REJECTION:\n" + "\n".join([f"   - {item}" for item in specific_missing])
@@ -121,14 +191,7 @@ class ProductAgent:
         print("   📋 PRODUCT: Calling Groq API for product spec...")
         
         try:
-            response = self.client.chat.completions.create(
-                model="llama-3.1-8b-instant",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.7 if revision_feedback else 0.5,
-                timeout=30  # Add timeout
-            )
-            
-            content = response.choices[0].message.content
+            content = self.call_llm_with_retry(prompt)
             print(f"   📋 PRODUCT: Received response, extracting JSON...")
             
             spec = self.extract_json(content)
@@ -139,7 +202,6 @@ class ProductAgent:
                 spec["_revision_attempt"] = self.revision_count + 1
                 spec["_improvements_made"] = "Added technical details, metrics, and acceptance criteria based on feedback"
                 
-                # Log improvement
                 self.improvement_log.append({
                     "attempt": self.revision_count + 1,
                     "feedback_used": revision_feedback[:200],
@@ -150,36 +212,8 @@ class ProductAgent:
             
         except Exception as e:
             print(f"   ❌ PRODUCT: API error: {e}")
-            # Return a fallback spec
-            return {
-                "value_proposition": "CampusFood Rescue connects students with discounted campus cafeteria food, reducing waste and saving students money through real-time SMS alerts.",
-                "personas": [
-                    {"name": "Hungry Hamza", "role": "student", "pain_point": "Spends too much on food, wants affordable meals"},
-                    {"name": "Manager Mahmood", "role": "cafeteria manager", "pain_point": "40% of food goes to waste daily"}
-                ],
-                "features": [
-                    {"name": "Real-time SMS Alerts", "description": "Get SMS within 30 seconds when food is available", "priority": 1},
-                    {"name": "Discounted Food Listings", "description": "See discounted food (30-50% off)", "priority": 2},
-                    {"name": "Waste Analytics Dashboard", "description": "Track waste reduction metrics", "priority": 3},
-                    {"name": "Student Preferences", "description": "Customize food type alerts", "priority": 4},
-                    {"name": "Manager Controls", "description": "Post deals and track inventory", "priority": 5}
-                ],
-                "user_stories": [
-                    "As a student, I want SMS alerts so that I save money",
-                    "As a manager, I want to post deals so that I reduce waste",
-                    "As a student, I want to browse deals so that I find affordable food"
-                ],
-                "acceptance_criteria": {
-                    "story_1": "SMS sent within 30 seconds of food becoming available",
-                    "story_2": "Deal appears immediately in student feeds",
-                    "story_3": "Deals sorted by distance from student"
-                },
-                "success_metrics": [
-                    "Reduce waste by 40%",
-                    "Save students Rs. 2,000/semester",
-                    "Onboard 10 managers in first month"
-                ]
-            }
+            print(f"   📋 PRODUCT: Using fallback spec")
+            return self.get_fallback_spec()
     
     def run(self):
         print("\n📋 PRODUCT AGENT: Waiting for CEO task...")
