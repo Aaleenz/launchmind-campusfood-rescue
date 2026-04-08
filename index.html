@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusFood Rescue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CampusFood Rescue</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">How it Works</a></li>
+                <li><a href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>CampusFood Rescue</h1>
+            <h2>Reduce food waste, save money, and make a difference</h2>
+            <button>Sign Up for SMS Alerts</button>
+        </section>
+        <section class="features">
+            <h2>How We Help</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>Real-time SMS Alerts</h3>
+                    <p>Students receive SMS notifications about available leftover food in the cafeteria</p>
+                </div>
+                <div class="feature">
+                    <h3>Discounted Food Listings</h3>
+                    <p>Students can view a list of available leftover food in the cafeteria, with prices discounted by up to 50% off the regular price</p>
+                </div>
+                <div class="feature">
+                    <h3>Waste Reduction Analytics</h3>
+                    <p>Cafeteria managers receive regular analytics reports on food waste reduction</p>
+                </div>
+            </div>
+        </section>
+        <section class="how-it-works">
+            <h2>How it Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Step 1: Students Receive SMS Alerts</h3>
+                    <p>Students receive SMS notifications about available leftover food in the cafeteria</p>
+                </div>
+                <div class="step">
+                    <h3>Step 2: Students Buy Discounted Food</h3>
+                    <p>Students can view a list of available leftover food in the cafeteria, with prices discounted by up to 50% off the regular price</p>
+                </div>
+                <div class="step">
+                    <h3>Step 3: Cafeteria Managers Track Waste Reduction</h3>
+                    <p>Cafeteria managers receive regular analytics reports on food waste reduction</p>
+                </div>
+            </div>
+        </section>
+        <section class="call-to-action">
+            <h2>Join the Movement</h2>
+            <button>Sign Up for SMS Alerts</button>
+        </section>
+    </main>
+    <footer>
+        <div class="social-media">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2023 CampusFood Rescue</p>
+    </footer>
+</body>
+</html>
+```
+
+```css
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #ccc;
+}
+
+.hero {
+    background-image: linear-gradient(to bottom, #333, #555);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 48px;
+}
+
+.hero h2 {
+    font-size: 24px;
+}
+
+.features {
+    padding: 40px;
+    background-color: #f7f7f7;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.feature {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.how-it-works {
+    padding: 40px;
+    background-color: #f7f7f7;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+
+.step h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.call-to-action {
+    padding: 40px;
+    background-color: #333;
+    color: #fff;
+}
+
+.call-to-action button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.call-to-action button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.social-media {
+    margin-bottom: 20px;
+}
+
+.social-media a {
+    margin-right: 10px;
+}
+
+.social-media i {
+    font-size: 24px;
+    color: #fff;
+}
+
+.social-media i:hover {
+    color: #ccc;
+}
+```
+
+```javascript
+// Add JavaScript code here to handle sign up functionality
+// Example:
+document.querySelector('.hero button').addEventListener('click', function() {
+  // Code to handle sign up
+});
