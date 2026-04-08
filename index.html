@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusFood Rescue</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CampusFood Rescue</div>
+            <ul>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">How it works</a></li>
+                <li><a href="#">Sign up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>CampusFood Rescue</h1>
+            <p>Save money, reduce waste, and eat affordably on campus.</p>
+            <button class="cta">Sign up for SMS Alerts</button>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h2>How it works</h2>
+            <div class="feature">
+                <h3>Real-time SMS Alerts</h3>
+                <p>We use Twilio's SMS gateway to send real-time notifications to students when food is available, with a 30-second delivery SLA.</p>
+            </div>
+            <div class="feature">
+                <h3>Discounted Food Listings</h3>
+                <p>We offer 30-50% discounts on leftover food, with pricing strategy based on food type, quantity, and proximity to the student's location.</p>
+            </div>
+            <div class="feature">
+                <h3>Waste Reduction Analytics</h3>
+                <p>We track and display real-time waste reduction metrics on our manager dashboard, including a 40% waste reduction goal within 6 months.</p>
+            </div>
+        </section>
+
+        <!-- How it works Section -->
+        <section class="how-it-works">
+            <h2>Our Process</h2>
+            <ol>
+                <li>Cafeteria managers post leftover food deals.</li>
+                <li>Students receive real-time SMS alerts with food options.</li>
+                <li>Students purchase food at discounted prices.</li>
+            </ol>
+        </section>
+
+        <!-- Call-to-action Section -->
+        <section class="cta-section">
+            <button class="cta">Sign up for SMS Alerts</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CampusFood Rescue</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.hero {
+    background-image: linear-gradient(to bottom, #333, #555);
+    background-size: 100% 300px;
+    background-position: 0% 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.cta {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta:hover {
+    background-color: #555;
+}
+
+.features {
+    padding: 2rem;
+}
+
+.feature {
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature h3 {
+    margin-top: 0;
+}
+
+.how-it-works {
+    padding: 2rem;
+}
+
+.how-it-works ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.how-it-works li {
+    margin-bottom: 10px;
+}
+
+.cta-section {
+    padding: 2rem;
+    background-color: #333;
+    color: #fff;
+}
+
+.cta-section button {
+    background-color: #555;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cta-section button:hover {
+    background-color: #333;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    clear: both;
+}
+
+@media only screen and (max-width: 768px) {
+    .hero {
+        height: auto;
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .features {
+        padding: 1rem;
+    }
+
+    .feature {
+        margin-bottom: 10px;
+    }
+
+    .how-it-works {
+        padding: 1rem;
+    }
+
+    .how-it-works ol {
+        margin-bottom: 10px;
+    }
+
+    .cta-section {
+        padding: 1rem;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+```
+
+```javascript
+// script.js (no functionality implemented)
